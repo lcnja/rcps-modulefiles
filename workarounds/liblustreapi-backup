@@ -9,4 +9,13 @@ proc ModulesHelp { } {
 
 module-whatis {This module adds the backup copy of liblustreapi to the dynamic library loading paths.}
 
-append-path LD_LIBRARY_PATH /shared/ucl/apps/liblustreapi.bak
+lappend auto_path /shared/ucl/apps/modulelibs/UsefulModuleFunctions
+package require modulefunctions 1.0
+
+if  { [modulefunctions::isCluster Myriad] } {
+    append-path LD_LIBRARY_PATH /shared/ucl/apps/liblustreapi.bak
+} else {
+    set curMod [module-info name]
+    puts stderr "NB: '$curMod' is not available or applicable on this system."
+}
+
