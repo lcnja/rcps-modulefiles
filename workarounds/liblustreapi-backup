@@ -1,0 +1,12 @@
+#%Module -*- tcl -*-
+##
+
+proc ModulesHelp { } {
+
+  puts stderr {This module adds the backup copy of liblustreapi to the dynamic library loading paths.}
+
+}
+
+module-whatis {This module adds the backup copy of liblustreapi to the dynamic library loading paths.}
+
+append-path LD_LIBRARY_PATH /shared/ucl/apps/liblustreapi.bak
